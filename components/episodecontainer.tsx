@@ -68,7 +68,7 @@ const EpisodeContainer = ({ anidata }: any) => {
   };
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8">
+    <div className="py-8  px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {renderGroupDropdown()}
         <div className="flex flex-wrap gap-2 items-center pt-6">

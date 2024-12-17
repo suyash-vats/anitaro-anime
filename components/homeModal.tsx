@@ -61,7 +61,7 @@ export default function HomepageModal() {
   }, []);
 
   return (
-    <div className="pt-28 relative">
+    <div className="pt-28  relative">
       <div className="flex justify-center ">
         <Link href={images[currImageIndex].link} passHref>
           <div className="relative w-[1200px] h-[470px]">

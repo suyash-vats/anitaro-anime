@@ -3,7 +3,7 @@ import HomepageModal from "@/components/homeModal";
 
 export default function Home() {
   return (
-    <div>
+    <div className=" font-mono">
       <HomepageModal />
       <HomePageAnimes />
     </div>
