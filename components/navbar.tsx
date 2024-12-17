@@ -34,7 +34,9 @@ export const NavbarContainer = () => {
       <Navbar className=" fixed" isBordered>
         <NavbarContent justify="end">
           <Link href={"/"}>
-            <NavbarBrand className="  font-bold text-4xl">Anitaro</NavbarBrand>
+            <NavbarBrand className=" font-mono  font-bold text-4xl">
+              Anitaro
+            </NavbarBrand>
           </Link>
           <NavbarItem as={div} className=" items-center pr-64  flex">
             <Input
