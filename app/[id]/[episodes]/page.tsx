@@ -4,11 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 
-const WatchEpisode = ({
-  params,
-}: {
-  params: { id: string; episodes: string };
-}) => {
+type paramsType = Promise<{ id: string; episodes: string }>;
+
+const WatchEpisode = ({ params }: { params: paramsType }) => {
   const [unwrappedParams, setUnwrappedParams] = useState<{
     id: string;
     episodes: string;
