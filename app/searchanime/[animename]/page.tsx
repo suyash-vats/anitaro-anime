@@ -28,13 +28,14 @@ const Animedata = ({ params }: any) => {
     getAnidata();
   }, [animename]);
   return (
-    <div className=" ml-5 mr-5 mt-24  grid gap-x-2 gap-y-4 grid-cols-3">
+    <div className="  ml-[80px] mr-[80px] bg-black  mt-24  grid gap-x-2 gap-y-4 grid-cols-3">
       {aniData.map((anime) => (
         <div className=" flex  col-span-1 " key={anime.id}>
           <Link href={`/animeinfo/${anime.id}`}>
             <div>
               <Image
                 // isBlurred={true}
+                isZoomed
                 className=" mb-2 border border-[#3f3f46] object-cover"
                 loading="lazy"
                 width={400}
