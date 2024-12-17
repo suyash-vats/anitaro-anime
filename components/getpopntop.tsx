@@ -52,12 +52,12 @@ export const HomePageAnimes = () => {
         </div>
       ) : (
         <div>
-          <div className="flex  bg-[#3f3f46] ml-10 mr-5 rounded-xl py-1 px-1">
+          <div className="flex bg-[#3f3f46] ml-[85px] mr-[85px] rounded-xl py-2 px-2 shadow-lg justify-between">
             <Button
-              className={`py-2 px-44 ${
+              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
                 activeButton === "/top-airing"
-                  ? "bg-black "
-                  : "bg-[#3f3f46]  text-[#94949d] "
+                  ? "bg-black text-white shadow-md"
+                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/top-airing")}
@@ -66,10 +66,10 @@ export const HomePageAnimes = () => {
             </Button>
 
             <Button
-              className={`py-2 px-44 ${
+              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
                 activeButton === "/popular"
-                  ? "bg-black"
-                  : "bg-[#3f3f46]  text-[#94949d]"
+                  ? "bg-black text-white shadow-md"
+                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/popular")}
@@ -78,10 +78,10 @@ export const HomePageAnimes = () => {
             </Button>
 
             <Button
-              className={`py-2 px-44 ${
+              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
                 activeButton === "/recent-episodes"
-                  ? "bg-black"
-                  : "bg-[#3f3f46]  text-[#94949d]"
+                  ? "bg-black text-white shadow-md"
+                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/recent-episodes")}
@@ -89,24 +89,26 @@ export const HomePageAnimes = () => {
               Recent
             </Button>
           </div>
+
           {btnLoading ? (
             <div className=" flex justify-center mt-10">
               <Spinner size="lg" />
             </div>
           ) : (
-            <div className=" ml-5 mr-5 mt-16  grid gap-x-2 gap-y-4 grid-cols-3">
+            <div className=" ml-[80px] mr-[80px]   mt-16  grid gap-x-2 gap-y-4 grid-cols-3">
               {topanime.map((anime) => (
                 <div className=" flex  col-span-1 " key={anime.id}>
                   <Link href={`/animeinfo/${anime.id}`}>
                     <div>
                       <Image
                         // isBlurred={true}
+                        isZoomed
                         onClick={() => {
                           setAnimeid(anime.id);
                         }}
                         className=" hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
                         loading="lazy"
-                        width={400}
+                        width={440}
                         height={240}
                         radius="sm"
                         alt="anime images"
