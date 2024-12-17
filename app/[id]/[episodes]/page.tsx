@@ -9,41 +9,30 @@ const WatchEpisode = ({
 }: {
   params: { id: string; episodes: string };
 }) => {
-  const [unwrappedParams, setUnwrappedParams] = useState<{
-    id: string;
-    episodes: string;
-  } | null>(null);
   const [episodeData, setEpisodeData] = useState<any>(null);
 
   useEffect(() => {
-    const unwrapParams = async () => {
-      const resolvedParams = await params;
-      setUnwrappedParams(resolvedParams);
+    const { id, episodes } = params;
+    const getEpisode = async () => {
+      try {
+        const response = await axios.get(
+          `${CONSUMET_URL}/servers/${id}-episode-${episodes}`
+        );
+        setEpisodeData(response.data);
+      } catch (error) {
+        console.error("Failed to fetch episode data:", error);
+      }
     };
 
-    unwrapParams();
+    getEpisode();
   }, [params]);
 
-  useEffect(() => {
-    if (unwrappedParams) {
-      const { id, episodes } = unwrappedParams;
-      const getEpisode = async () => {
-        try {
-          const response = await axios.get(
-            `${CONSUMET_URL}/servers/${id}-episode-${episodes}`
-          );
-          setEpisodeData(response.data);
-        } catch (error) {
-          console.error("Failed to fetch episode data:", error);
-        }
-      };
-
-      getEpisode();
-    }
-  }, [unwrappedParams]);
-
-  if (!unwrappedParams) {
-    return <p>Loading...</p>;
+  if (!episodeData) {
+    return (
+      <div className="flex justify-center mt-52">
+        <Spinner size="lg" />
+      </div>
+    );
   }
 
   if (episodeData) {
@@ -51,16 +40,10 @@ const WatchEpisode = ({
   }
 
   return (
-    <div className=" bg-black mt-32">
-      {episodeData ? (
-        <div className=" flex justify-center mt-64">
-          <p className=" animate-pulse">Redirecting to episode...</p>
-        </div>
-      ) : (
-        <div className=" flex justify-center mt-52">
-          <Spinner size="lg" />
-        </div>
-      )}
+    <div className="bg-black mt-32">
+      <div className="flex justify-center mt-64">
+        <p className="animate-pulse">Redirecting to episode...</p>
+      </div>
     </div>
   );
 };
