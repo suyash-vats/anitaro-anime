@@ -28,7 +28,7 @@ const Animedata = ({ params }: any) => {
     getAnidata();
   }, [animename]);
   return (
-    <div className="  ml-[80px] mr-[80px] bg-black  mt-24  grid gap-x-2 gap-y-4 grid-cols-3">
+    <div className="  sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
       {aniData.map((anime) => (
         <div className=" flex  col-span-1 " key={anime.id}>
           <Link href={`/animeinfo/${anime.id}`}>
