@@ -41,7 +41,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
   }, [unwrappedParams]);
 
   if (!unwrappedParams) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
 
   if (episodeData) {
