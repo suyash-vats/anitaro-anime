@@ -64,7 +64,7 @@ export default function HomepageModal() {
     <div className="pt-28  relative">
       <div className="flex justify-center ">
         <Link href={images[currImageIndex].link} passHref>
-          <div className="relative sm:w-[1350px] w-[390px]  h-[470px]">
+          <div className="relative sm:w-[1350px] w-[340px]  h-[470px]">
             <Image
               src={images[currImageIndex].src}
               alt={images[currImageIndex].alt}
@@ -75,9 +75,9 @@ export default function HomepageModal() {
           </div>
         </Link>
       </div>
-      <div className=" translate-x-5 sm:translate-x-28 -translate-y-32">
+      <div className=" translate-x-14  sm:translate-x-28 -translate-y-32">
         <p className=" ">{images[currImageIndex].year}</p>
-        <p className=" font-bold text-xl sm:text-4xl">
+        <p className=" font-bold text-md sm:text-4xl">
           {images[currImageIndex].name}
         </p>
         <div>
