@@ -52,7 +52,7 @@ export const HomePageAnimes = () => {
         </div>
       ) : (
         <div>
-          <div className="flex bg-[#3f3f46] ml-[85px] mr-[85px] rounded-xl py-2 px-2 shadow-lg justify-between">
+          <div className="flex bg-[#3f3f46] sm:ml-[85px] ml-2 mr-2 sm:mr-[85px] rounded-xl py-2 px-2 shadow-lg justify-between">
             <Button
               className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
                 activeButton === "/top-airing"
@@ -95,7 +95,7 @@ export const HomePageAnimes = () => {
               <Spinner size="lg" />
             </div>
           ) : (
-            <div className=" ml-[80px] mr-[80px]   mt-16  grid gap-x-2 gap-y-4 grid-cols-3">
+            <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
               {topanime.map((anime) => (
                 <div className=" flex  col-span-1 " key={anime.id}>
                   <Link href={`/animeinfo/${anime.id}`}>
