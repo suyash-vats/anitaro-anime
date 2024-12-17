@@ -64,7 +64,7 @@ export default function HomepageModal() {
     <div className="pt-28  relative">
       <div className="flex justify-center ">
         <Link href={images[currImageIndex].link} passHref>
-          <div className="relative w-[1200px] h-[470px]">
+          <div className="relative w-[1350px] h-[470px]">
             <Image
               src={images[currImageIndex].src}
               alt={images[currImageIndex].alt}
@@ -75,12 +75,12 @@ export default function HomepageModal() {
           </div>
         </Link>
       </div>
-      <div className=" translate-x-14 -translate-y-32">
+      <div className=" translate-x-28 -translate-y-32">
         <p className=" ">{images[currImageIndex].year}</p>
         <p className=" font-bold text-4xl">{images[currImageIndex].name}</p>
         <div>
           <Link href={images[currImageIndex].link}>
-            <button className=" font-semibold px-4 mt-3 rounded-md py-2 bg-white text-black">
+            <button className=" hover:bg-gray-300 active:scale-105 transition-all duration-300 font-semibold px-4 mt-3 rounded-md py-2 bg-white text-black">
               Go To Show
             </button>
           </Link>
