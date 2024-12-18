@@ -13,41 +13,33 @@ const images = [
     name: "Berserk",
   },
   {
-    src: "/dss.png",
-    alt: "Naruto",
+    src: "/vagabond.png",
+    alt: "vagabond",
     link: "/animeinfo/naruto",
     year: 2002,
     name: "Vagabond",
   },
   {
     src: "/mob.jpeg",
-    alt: "Dandadan",
+    alt: "Mob Psycho 100",
     link: "/animeinfo/dandadan",
     year: 2024,
     name: "Mob Psycho 100",
   },
   {
     src: "/dorohedoro.jpeg",
-    alt: "Saiki Kusuo",
+    alt: "Dorohedoro",
     link: "/animeinfo/saiki-kusuo-no-ps-nan",
     year: 2016,
     name: "Dorohedoro",
   },
   {
     src: "/opm.jpeg",
-    alt: "One Piece",
+    alt: "One Punch Man",
     link: "/animeinfo/one-piece",
     year: 1999,
     name: "One Punch Man",
   },
-
-  //   {
-  //     src: "/ds.png",
-  //     alt: "Demon Slayer",
-  //     link: "/animeinfo/kimetsu-no-yaiba",
-  //     year: 2019,
-  //     name: "Demon Slayer",
-  //   },
 ];
 
 export default function MangaHomepageModal() {
