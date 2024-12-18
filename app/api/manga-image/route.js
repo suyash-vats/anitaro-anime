@@ -19,7 +19,6 @@ export async function GET(request) {
       responseType: "arraybuffer",
     });
 
-    // Create a response with the image data
     return new NextResponse(response.data, {
       status: 200,
       headers: {

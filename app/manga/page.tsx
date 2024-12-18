@@ -2,7 +2,7 @@
 import { MANGA_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Spinner, Button } from "@nextui-org/react";
+import { Spinner, Button, Image } from "@nextui-org/react";
 import Link from "next/link";
 
 import MangaHomepageModal from "@/components/mangaHomeModal";
@@ -91,14 +91,14 @@ const MangaHomePage = () => {
                   >
                     <Link href={`/animeinfo/${manga.id}`}>
                       <div>
-                        <img
-                          // isZoomed
+                        <Image
+                          isZoomed
                           onClick={() => setMangaId(manga.id)}
                           className="hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
                           loading="lazy"
                           width={440}
                           height={240}
-                          // radius="sm"
+                          radius="sm"
                           alt="manga images"
                           src={getProxyImageUrl(manga.image)}
                         />
