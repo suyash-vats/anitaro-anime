@@ -40,7 +40,6 @@ export const HomePageAnimes = () => {
     getTrendinganime("/top-airing");
     setLoading(false);
   }, []);
-  console.log(animeId);
 
   return (
     <div className=" min-h-screen mt-32  -translate-y-14 bg-[#0a0a0a]">
