@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 
 import Link from "next/link";
+import { div } from "framer-motion/client";
 
 interface Anime {
   id: string;
@@ -45,7 +46,7 @@ export const HomePageAnimes = () => {
   console.log(animeId);
 
   return (
-    <div className=" min-h-screen  -translate-y-14 bg-[#0a0a0a]">
+    <div className=" min-h-screen mt-32  -translate-y-14 bg-[#0a0a0a]">
       {loading ? (
         <div className="flex justify-center">
           <Spinner size="lg" />
@@ -95,38 +96,40 @@ export const HomePageAnimes = () => {
               <Spinner size="lg" />
             </div>
           ) : (
-            <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
-              {topanime.map((anime) => (
-                <div className=" flex  col-span-1 " key={anime.id}>
-                  <Link href={`/animeinfo/${anime.id}`}>
-                    <div>
-                      <Image
-                        // isBlurred={true}
-                        isZoomed
-                        onClick={() => {
-                          setAnimeid(anime.id);
-                        }}
-                        className=" hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
-                        loading="lazy"
-                        width={440}
-                        height={240}
-                        radius="sm"
-                        alt="anime images"
-                        src={anime.image}
-                      />
-                      <div className="mt-2">
-                        {anime.title.length > 60
-                          ? anime.title.slice(0, 17) + "..."
-                          : anime.title}
+            <div className=" flex justify-center">
+              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
+                {topanime.map((anime) => (
+                  <div className=" flex  col-span-1 " key={anime.id}>
+                    <Link href={`/animeinfo/${anime.id}`}>
+                      <div>
+                        <Image
+                          // isBlurred={true}
+                          isZoomed
+                          onClick={() => {
+                            setAnimeid(anime.id);
+                          }}
+                          className=" hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
+                          loading="lazy"
+                          width={440}
+                          height={240}
+                          radius="sm"
+                          alt="anime images"
+                          src={anime.image}
+                        />
+                        <div className="mt-2">
+                          {anime.title.length > 60
+                            ? anime.title.slice(0, 17) + "..."
+                            : anime.title}
+                        </div>
+                        <div className=" text-gray-400">
+                          {activeButton === "/popular" ? null : "Episode "}
+                          {anime.episodeNumber}
+                        </div>
                       </div>
-                      <div className=" text-gray-400">
-                        {activeButton === "/popular" ? null : "Episode "}
-                        {anime.episodeNumber}
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
