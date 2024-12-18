@@ -1,13 +1,10 @@
 "use client";
-
 import { CONSUMET_URL } from "@/config";
 import { Button, Image } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
-
 import Link from "next/link";
-import { div } from "framer-motion/client";
 
 interface Anime {
   id: string;
