@@ -2,7 +2,7 @@
 import { MANGA_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Spinner, Button, Image } from "@nextui-org/react";
+import { Spinner, Button, Image, ButtonGroup } from "@nextui-org/react";
 import Link from "next/link";
 
 import MangaHomepageModal from "@/components/mangaHomeModal";
@@ -31,7 +31,7 @@ const MangaHomePage = () => {
   };
 
   return (
-    <div className=" min-h-screen  -translate-y-14 bg-[#0a0a0a]">
+    <div className=" min-h-screen font-geist  -translate-y-14 bg-[#0a0a0a]">
       <MangaHomepageModal />
       {loading ? (
         <div className="flex justify-center">
@@ -102,10 +102,21 @@ const MangaHomePage = () => {
                           alt="manga images"
                           src={getProxyImageUrl(manga.image)}
                         />
-                        <div className=" mb-4 mt-1">
-                          {manga.title.length > 60
-                            ? manga.title.slice(0, 17) + "..."
-                            : manga.title}
+                        <div className=" flex justify-between">
+                          <div className=" mb-4 mt-1">
+                            {manga.title.length > 60
+                              ? manga.title.slice(0, 17) + "..."
+                              : manga.title}
+                          </div>
+                          <div>
+                            {" "}
+                            <Button
+                              className=" border-[#3f3f46] border"
+                              size="sm"
+                            >
+                              {manga.status}
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </Link>
