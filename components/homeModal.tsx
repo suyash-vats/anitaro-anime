@@ -61,7 +61,7 @@ export default function HomepageModal() {
   }, []);
 
   return (
-    <div className="pt-28 relative">
+    <div className=" pt-12 relative">
       <div className="flex justify-center">
         <div className="relative sm:w-[1350px] w-[340px] h-[470px]">
           <Image
