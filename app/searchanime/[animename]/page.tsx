@@ -28,29 +28,31 @@ const Animedata = ({ params }: any) => {
     getAnidata();
   }, [animename]);
   return (
-    <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  bg-black mt-32 mb-16  sm:mt-24  grid gap-x-2 gap-y-4 sm:grid-cols-3">
-      {aniData.map((anime) => (
-        <div className=" flex  col-span-1 " key={anime.id}>
-          <Link href={`/animeinfo/${anime.id}`}>
-            <div>
-              <Image
-                // isBlurred={true}
-                isZoomed
-                className=" mb-2 border border-[#3f3f46] object-cover"
-                loading="lazy"
-                width={400}
-                height={240}
-                radius="sm"
-                src={anime.image}
-              />
+    <div className=" flex justify-center">
+      <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  bg-black mt-32 mb-16  sm:mt-24  grid gap-x-5 gap-y-4 sm:grid-cols-3">
+        {aniData.map((anime) => (
+          <div className="   col-span-1 " key={anime.id}>
+            <Link href={`/animeinfo/${anime.id}`}>
+              <div>
+                <Image
+                  // isBlurred={true}
+                  isZoomed
+                  className=" mb-2 border border-[#3f3f46] object-cover"
+                  loading="lazy"
+                  width={400}
+                  height={240}
+                  radius="sm"
+                  src={anime.image}
+                />
 
-              {anime.title.length > 60
-                ? anime.title.slice(0, 17) + "..."
-                : anime.title}
-            </div>
-          </Link>
-        </div>
-      ))}
+                {anime.title.length > 60
+                  ? anime.title.slice(0, 17) + "..."
+                  : anime.title}
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
