@@ -2,7 +2,7 @@
 import { MANGA_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Spinner, Button, Image, ButtonGroup } from "@nextui-org/react";
+import { Spinner, Button, Image } from "@nextui-org/react";
 import Link from "next/link";
 
 import MangaHomepageModal from "@/components/mangaHomeModal";
