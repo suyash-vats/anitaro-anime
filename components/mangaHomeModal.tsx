@@ -6,33 +6,33 @@ import { useEffect, useState } from "react";
 
 const images = [
   {
-    src: "/mob.jpeg",
-    alt: "Attack on Titan",
+    src: "/berserk.jpg",
+    alt: "Berserk",
     link: "/animeinfo/shingeki-no-kyojin",
     year: 2013,
-    name: "Attack on Titan",
+    name: "Berserk",
   },
-  //   {
-  //     src: "/dandadan.webp",
-  //     alt: "Dandadan",
-  //     link: "/animeinfo/dandadan",
-  //     year: 2024,
-  //     name: "Dandadan",
-  //   },
-  //   {
-  //     src: "/saiki2.jpg",
-  //     alt: "Saiki Kusuo",
-  //     link: "/animeinfo/saiki-kusuo-no-ps-nan",
-  //     year: 2016,
-  //     name: "The Disastrous Life of Saiki K.",
-  //   },
-  //   {
-  //     src: "/onepiece.jpeg",
-  //     alt: "One Piece",
-  //     link: "/animeinfo/one-piece",
-  //     year: 1999,
-  //     name: "One Piece",
-  //   },
+  {
+    src: "/mob.jpeg",
+    alt: "Dandadan",
+    link: "/animeinfo/dandadan",
+    year: 2024,
+    name: "Mob Psycho 100",
+  },
+  {
+    src: "/dorohedoro.jpeg",
+    alt: "Saiki Kusuo",
+    link: "/animeinfo/saiki-kusuo-no-ps-nan",
+    year: 2016,
+    name: "Dorohedoro",
+  },
+  {
+    src: "/opm.jpeg",
+    alt: "One Piece",
+    link: "/animeinfo/one-piece",
+    year: 1999,
+    name: "One Punch Man",
+  },
   //   {
   //     src: "/naruto.jpg",
   //     alt: "Naruto",
