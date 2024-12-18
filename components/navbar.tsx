@@ -64,7 +64,7 @@ export const NavbarContainer = () => {
           href="/"
           className="font-bold font-mono text-xl bg-gradient-to-r text-white bg-clip-text text-transparent hover:scale-105 transition-transform"
         >
-          Anitaro
+          アニタロ
         </Link>
       </NavbarBrand>
 
