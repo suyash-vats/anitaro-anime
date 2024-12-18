@@ -13,7 +13,7 @@ const MangaHomePage = () => {
   const [mangaId, setMangaId] = useState<string>("");
 
   const getManga = async (path: string) => {
-    const response: any = await axios.get(`${MANGA_URL}/mangadex/${path}`);
+    const response: any = await axios.get(`${CONSUMET_URL}/top-airing`);
     setMangadata(response.data.results);
     setActiveBtn(path);
   };
