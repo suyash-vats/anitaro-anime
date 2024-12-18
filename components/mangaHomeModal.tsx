@@ -54,7 +54,7 @@ export default function MangaHomepageModal() {
   }, []);
 
   return (
-    <div className=" pt-[104px] pb-[72px] relative">
+    <div className=" pt-[104px] font-mono pb-[72px] relative">
       <div className="flex justify-center">
         <div className="relative sm:w-[1350px] w-[340px] h-[470px]">
           <Image

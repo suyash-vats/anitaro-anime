@@ -31,7 +31,7 @@ const MangaHomePage = () => {
   };
 
   return (
-    <div className=" min-h-screen font-geist  -translate-y-14 bg-[#0a0a0a]">
+    <div className=" min-h-screen font-mono  -translate-y-14 bg-[#0a0a0a]">
       <MangaHomepageModal />
       {loading ? (
         <div className="flex justify-center">
@@ -111,7 +111,7 @@ const MangaHomePage = () => {
                           <div>
                             {" "}
                             <Button
-                              className=" border-[#3f3f46] border"
+                              className=" bg-black border-[#3f3f46] border"
                               size="sm"
                             >
                               {manga.status}
