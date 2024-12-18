@@ -89,7 +89,7 @@ const MangaHomePage = () => {
                     className="flex col-span-1"
                     key={`${manga.id}-${manga.title}`}
                   >
-                    <Link href={`/animeinfo/${manga.id}`}>
+                    <Link href={`/mangainfo/${manga.id}`}>
                       <div>
                         <Image
                           isZoomed
@@ -109,7 +109,6 @@ const MangaHomePage = () => {
                               : manga.title}
                           </div>
                           <div>
-                            {" "}
                             <Button
                               className=" bg-black border-[#3f3f46] border"
                               size="sm"
