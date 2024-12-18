@@ -44,11 +44,15 @@ export default function MangaInfo({ params }: any) {
       ? mangadata.genres.split(",").map((genre: string) => genre.trim())
       : [];
 
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
+
   return (
     <div className="bg-gradient-to-b font-mono from-black to-neutral-900 min-h-screen">
       <div
         className="absolute top-0 left-0 w-full h-[400px] bg-cover bg-center opacity-10 blur-sm"
-        style={{ backgroundImage: `url(${mangadata.image})` }}
+        style={{ backgroundImage: `url(${getProxyImageUrl(mangadata.image)})` }}
       />
 
       <div className="relative z-10">
@@ -61,7 +65,7 @@ export default function MangaInfo({ params }: any) {
                 <Image
                   className="object-cover rounded-lg shadow-2xl shadow-amber-500/10 
                            transition-transform duration-300 group-hover:scale-[1.02]"
-                  src={mangadata.image}
+                  src={getProxyImageUrl(mangadata.image)}
                   width={350}
                   height={500}
                   alt={mangadata.title || "Manga cover"}
