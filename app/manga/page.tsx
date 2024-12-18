@@ -7,25 +7,25 @@ import Link from "next/link";
 
 const MangaHomePage = () => {
   const [mangaData, setMangadata] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true); // Initially set to true
   const [activeButton, setActiveBtn] = useState("/trending");
   const [btnLoading, setbtnLoading] = useState<boolean>(false);
   const [mangaId, setMangaId] = useState<string>("");
 
   const getManga = async (path: string) => {
+    setbtnLoading(true);
     const response: any = await axios.get(`${MANGA_URL}/mangakakalot/${path}`);
     setMangadata(response.data.results);
     setActiveBtn(path);
+    setbtnLoading(false);
   };
 
   useEffect(() => {
-    setLoading(true);
-    getManga("popular");
-    setLoading(false);
+    getManga("popular").then(() => setLoading(false)); // set loading to false once data is fetched
   }, []);
 
   return (
-    <div className=" min-h-screen mt-32  -translate-y-14 bg-[#0a0a0a]">
+    <div className=" min-h-screen mt-32 -translate-y-14 bg-[#0a0a0a]">
       {loading ? (
         <div className="flex justify-center">
           <Spinner size="lg" />
@@ -76,18 +76,18 @@ const MangaHomePage = () => {
             </div>
           ) : (
             <div className=" flex justify-center">
-              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
+              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px] mt-16 grid gap-x-2 gap-y-4 sm:grid-cols-3">
                 {mangaData.map((manga) => (
-                  <div className=" flex  col-span-1 " key={manga.id}>
+                  <div
+                    className="flex col-span-1"
+                    key={`${manga.id}-${manga.title}`} // Ensure the key is unique
+                  >
                     <Link href={`/animeinfo/${manga.id}`}>
                       <div>
                         <Image
-                          // isBlurred={true}
                           isZoomed
-                          onClick={() => {
-                            setMangaId(manga.id);
-                          }}
-                          className=" hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
+                          onClick={() => setMangaId(manga.id)}
+                          className="hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
                           loading="lazy"
                           width={440}
                           height={240}
@@ -100,7 +100,7 @@ const MangaHomePage = () => {
                             ? manga.title.slice(0, 17) + "..."
                             : manga.title}
                         </div>
-                        <div className=" text-gray-400">
+                        <div className="text-gray-400">
                           {activeButton === "/popular" ? null : "Episode "}
                           {manga.episodeNumber}
                         </div>
@@ -116,4 +116,5 @@ const MangaHomePage = () => {
     </div>
   );
 };
+
 export default MangaHomePage;
