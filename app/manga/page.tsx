@@ -76,7 +76,7 @@ const MangaHomePage = () => {
             </div>
           ) : (
             <div className=" flex justify-center">
-              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px] mt-16 grid gap-x-2 gap-y-4 sm:grid-cols-3">
+              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px] mt-16 grid gap-x-4 gap-y-4 sm:grid-cols-3">
                 {mangaData.map((manga) => (
                   <div
                     className="flex col-span-1"
@@ -95,14 +95,10 @@ const MangaHomePage = () => {
                           alt="manga images"
                           src={manga.image}
                         />
-                        <div className="mt-2">
+                        <div className=" mb-4 mt-1">
                           {manga.title.length > 60
                             ? manga.title.slice(0, 17) + "..."
                             : manga.title}
-                        </div>
-                        <div className="text-gray-400">
-                          {activeButton === "/popular" ? null : "Episode "}
-                          {manga.episodeNumber}
                         </div>
                       </div>
                     </Link>
