@@ -15,7 +15,7 @@ const MangaHomePage = () => {
 
   const getManga = async (path: string) => {
     setbtnLoading(true);
-    const response: any = await axios.get(`${MANGA_URL}/mangakakalot/${path}`);
+    const response: any = await axios.get(`${MANGA_URL}/mangadex/${path}`);
     setMangadata(response.data.results);
     setActiveBtn(path);
     setbtnLoading(false);
