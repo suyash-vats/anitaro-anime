@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner, Button, Image } from "@nextui-org/react";
 import Link from "next/link";
+import MangaHomepageModal from "@/components/mangaHomeModal";
 
 const MangaHomePage = () => {
   const [mangaData, setMangadata] = useState<any[]>([]);
@@ -25,7 +26,8 @@ const MangaHomePage = () => {
   }, []);
 
   return (
-    <div className=" min-h-screen mt-32 -translate-y-14 bg-[#0a0a0a]">
+    <div className=" min-h-screen  -translate-y-14 bg-[#0a0a0a]">
+      <MangaHomepageModal />
       {loading ? (
         <div className="flex justify-center">
           <Spinner size="lg" />

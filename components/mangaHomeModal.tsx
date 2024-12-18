@@ -6,50 +6,50 @@ import { useEffect, useState } from "react";
 
 const images = [
   {
-    src: "/aot.jpg",
+    src: "/mob.jpeg",
     alt: "Attack on Titan",
     link: "/animeinfo/shingeki-no-kyojin",
     year: 2013,
     name: "Attack on Titan",
   },
-  {
-    src: "/dandadan.webp",
-    alt: "Dandadan",
-    link: "/animeinfo/dandadan",
-    year: 2024,
-    name: "Dandadan",
-  },
-  {
-    src: "/saiki2.jpg",
-    alt: "Saiki Kusuo",
-    link: "/animeinfo/saiki-kusuo-no-ps-nan",
-    year: 2016,
-    name: "The Disastrous Life of Saiki K.",
-  },
-  {
-    src: "/onepiece.jpeg",
-    alt: "One Piece",
-    link: "/animeinfo/one-piece",
-    year: 1999,
-    name: "One Piece",
-  },
-  {
-    src: "/naruto.jpg",
-    alt: "Naruto",
-    link: "/animeinfo/naruto",
-    year: 2002,
-    name: "Naruto",
-  },
-  {
-    src: "/ds.png",
-    alt: "Demon Slayer",
-    link: "/animeinfo/kimetsu-no-yaiba",
-    year: 2019,
-    name: "Demon Slayer",
-  },
+  //   {
+  //     src: "/dandadan.webp",
+  //     alt: "Dandadan",
+  //     link: "/animeinfo/dandadan",
+  //     year: 2024,
+  //     name: "Dandadan",
+  //   },
+  //   {
+  //     src: "/saiki2.jpg",
+  //     alt: "Saiki Kusuo",
+  //     link: "/animeinfo/saiki-kusuo-no-ps-nan",
+  //     year: 2016,
+  //     name: "The Disastrous Life of Saiki K.",
+  //   },
+  //   {
+  //     src: "/onepiece.jpeg",
+  //     alt: "One Piece",
+  //     link: "/animeinfo/one-piece",
+  //     year: 1999,
+  //     name: "One Piece",
+  //   },
+  //   {
+  //     src: "/naruto.jpg",
+  //     alt: "Naruto",
+  //     link: "/animeinfo/naruto",
+  //     year: 2002,
+  //     name: "Naruto",
+  //   },
+  //   {
+  //     src: "/ds.png",
+  //     alt: "Demon Slayer",
+  //     link: "/animeinfo/kimetsu-no-yaiba",
+  //     year: 2019,
+  //     name: "Demon Slayer",
+  //   },
 ];
 
-export default function HomepageModal() {
+export default function MangaHomepageModal() {
   const [currImageIndex, setCurrImageIndex] = useState(0);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function HomepageModal() {
   }, []);
 
   return (
-    <div className=" pt-12 relative">
+    <div className=" pt-[104px] pb-[72px] relative">
       <div className="flex justify-center">
         <div className="relative sm:w-[1350px] w-[340px] h-[470px]">
           <Image
