@@ -1,5 +1,5 @@
 "use client";
-import { CONSUMET_URL, MANGA_URL } from "@/config";
+import { MANGA_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner, Button, Image } from "@nextui-org/react";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const MangaHomePage = () => {
   const [mangaData, setMangadata] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true); // Initially set to true
+  const [loading, setLoading] = useState<boolean>(true);
   const [activeButton, setActiveBtn] = useState("/trending");
   const [btnLoading, setbtnLoading] = useState<boolean>(false);
   const [mangaId, setMangaId] = useState<string>("");
@@ -21,7 +21,7 @@ const MangaHomePage = () => {
   };
 
   useEffect(() => {
-    getManga("popular").then(() => setLoading(false)); // set loading to false once data is fetched
+    getManga("popular").then(() => setLoading(false));
   }, []);
 
   return (
@@ -80,7 +80,7 @@ const MangaHomePage = () => {
                 {mangaData.map((manga) => (
                   <div
                     className="flex col-span-1"
-                    key={`${manga.id}-${manga.title}`} // Ensure the key is unique
+                    key={`${manga.id}-${manga.title}`}
                   >
                     <Link href={`/animeinfo/${manga.id}`}>
                       <div>
