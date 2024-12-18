@@ -58,6 +58,7 @@ export default function MangaHomepageModal() {
       <div className="flex justify-center">
         <div className="relative sm:w-[1350px] w-[340px] h-[470px]">
           <Image
+            loading="lazy"
             src={images[currImageIndex].src}
             alt={images[currImageIndex].alt}
             fill
