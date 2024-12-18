@@ -74,7 +74,7 @@ export default function MangaHomepageModal() {
               href={images[currImageIndex].link}
               className="inline-block hover:bg-gray-300 active:scale-105 transition-all duration-300 font-semibold px-3 sm:px-4 rounded-md py-2 bg-white text-black"
             >
-              Go To Show
+              Read
             </Link>
           </div>
 
