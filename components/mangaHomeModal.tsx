@@ -13,6 +13,13 @@ const images = [
     name: "Berserk",
   },
   {
+    src: "/dss.png",
+    alt: "Naruto",
+    link: "/animeinfo/naruto",
+    year: 2002,
+    name: "Vagabond",
+  },
+  {
     src: "/mob.jpeg",
     alt: "Dandadan",
     link: "/animeinfo/dandadan",
@@ -33,13 +40,7 @@ const images = [
     year: 1999,
     name: "One Punch Man",
   },
-  //   {
-  //     src: "/naruto.jpg",
-  //     alt: "Naruto",
-  //     link: "/animeinfo/naruto",
-  //     year: 2002,
-  //     name: "Naruto",
-  //   },
+
   //   {
   //     src: "/ds.png",
   //     alt: "Demon Slayer",
