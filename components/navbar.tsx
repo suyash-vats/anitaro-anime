@@ -71,7 +71,7 @@ export const NavbarContainer = () => {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link
-            href="/anime"
+            href="/"
             className="text-foreground/60 hover:text-foreground transition-colors relative group"
           >
             <span className=" font-mono">Anime</span>
