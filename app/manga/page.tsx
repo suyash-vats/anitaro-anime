@@ -2,8 +2,9 @@
 import { MANGA_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Spinner, Button, Image } from "@nextui-org/react";
+import { Spinner, Button } from "@nextui-org/react";
 import Link from "next/link";
+
 import MangaHomepageModal from "@/components/mangaHomeModal";
 
 const MangaHomePage = () => {
@@ -24,6 +25,10 @@ const MangaHomePage = () => {
   useEffect(() => {
     getManga("popular").then(() => setLoading(false));
   }, []);
+
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
 
   return (
     <div className=" min-h-screen  -translate-y-14 bg-[#0a0a0a]">
@@ -86,16 +91,16 @@ const MangaHomePage = () => {
                   >
                     <Link href={`/animeinfo/${manga.id}`}>
                       <div>
-                        <Image
-                          isZoomed
+                        <img
+                          // isZoomed
                           onClick={() => setMangaId(manga.id)}
                           className="hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
                           loading="lazy"
                           width={440}
                           height={240}
-                          radius="sm"
+                          // radius="sm"
                           alt="manga images"
-                          src={manga.image}
+                          src={getProxyImageUrl(manga.image)}
                         />
                         <div className=" mb-4 mt-1">
                           {manga.title.length > 60
