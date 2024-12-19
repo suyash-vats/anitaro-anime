@@ -146,7 +146,9 @@ export default function MangaInfo({ params }: any) {
             </div>
           </div>
         </div>
-        <div></div>
+        <div>
+          <MangaChapContainer mangadata={mangadata} />
+        </div>
       </div>
     </div>
   );
