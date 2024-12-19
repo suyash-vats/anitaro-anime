@@ -48,6 +48,7 @@ export default function MangaInfo({ params }: any) {
   const getProxyImageUrl = (originalUrl: string) => {
     return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
   };
+  console.log(mangadata);
 
   return (
     <div className="bg-gradient-to-b font-mono from-black to-neutral-900 min-h-screen">
