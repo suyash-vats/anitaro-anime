@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import MangaHomepageModal from "@/components/mangaHomeModal";
 import { MangaNavbar } from "@/components/mangaNavbar";
+import { Footer } from "@/components/footer";
 
 const MangaHomePage = () => {
   const [mangaData, setMangadata] = useState<any[]>([]);
@@ -129,6 +130,9 @@ const MangaHomePage = () => {
             )}
           </div>
         )}
+      </div>
+      <div className="">
+        <Footer />
       </div>
     </div>
   );
