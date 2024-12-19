@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# アニタロ (AniTaro)
 
-## Getting Started
+Your ultimate anime streaming and manga reading platform
 
-First, run the development server:
+📖 About
+アニタロ lets you discover, stream, and read your favorite anime and manga in one place. Built for fans, by fans.
+✨ Features
+🎬 Anime
 
+HD Streaming - Crystal clear video quality
+Multi-language Subtitles - Watch in your preferred language
+Progress Tracking - Never lose your place
+Smart Recommendations - Discover new series
+
+📚 Manga
+
+HD Scans - High-quality manga pages
+Reading Options - Both RTL and LTR support
+Bookmarks - Save your favorite chapters
+Auto-Updates - Get notified of new releases
+
+Installation
+## To run this 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/akshitvigg/anitaro.git 
+```
+# Change directory
+```bash
+cd anitaro
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Start development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🤝 Contributing
 
-## Learn More
+Fork it
+Create your feature branch (git checkout -b feature/amazing)
+Commit changes (git commit -am 'Add amazing feature')
+Push to branch (git push origin feature/amazing)
+Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Made with ❤️ for anime and manga fans
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Authors
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Akshit Vig** - [Akshit Vig](https://github.com/akshitvigg)
