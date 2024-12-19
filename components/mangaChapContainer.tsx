@@ -1,4 +1,9 @@
 const MangaChapContainer = ({ mangadata }: any) => {
-  const chapter = mangadata.chapters;
-  return <div>asasa</div>;
+  const chapters = mangadata.chapters;
+  return (
+    <div>
+      asasa
+      {chapters.title}
+    </div>
+  );
 };
