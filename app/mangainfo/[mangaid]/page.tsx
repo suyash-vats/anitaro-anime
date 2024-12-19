@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState, use } from "react";
 import MangaChapContainer from "@/components/mangaChapContainer";
 import { MangaNavbar } from "@/components/mangaNavbar";
+import { Footer } from "@/components/footer";
 
 export default function MangaInfo({ params }: any) {
   const resolvedParams: any = use(params);
@@ -157,6 +158,9 @@ export default function MangaInfo({ params }: any) {
             <MangaChapContainer mangadata={mangadata} />
           </div>
         </div>
+      </div>
+      <div className=" translate-y-14">
+        <Footer />
       </div>
     </div>
   );
