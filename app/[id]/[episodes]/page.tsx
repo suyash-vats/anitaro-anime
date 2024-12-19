@@ -52,16 +52,18 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
   return (
     <div>
       <NavbarContainer />
-      <div className=" bg-black mt-32">
-        {episodeData ? (
-          <div className=" flex justify-center mt-64">
-            <p className=" animate-pulse">Redirecting to episode...</p>
-          </div>
-        ) : (
-          <div className=" flex justify-center mt-52">
-            <Spinner size="lg" />
-          </div>
-        )}
+      <div className="">
+        <div className=" mt-32">
+          {episodeData ? (
+            <div className=" flex  justify-center mt-64">
+              <p className=" animate-pulse">Redirecting to episode...</p>
+            </div>
+          ) : (
+            <div className=" flex justify-center mt-52">
+              <Spinner size="lg" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
