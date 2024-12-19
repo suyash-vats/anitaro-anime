@@ -131,9 +131,6 @@ const MangaHomePage = () => {
           </div>
         )}
       </div>
-      <div className="">
-        <Footer />
-      </div>
     </div>
   );
 };

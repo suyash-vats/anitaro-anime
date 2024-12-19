@@ -131,9 +131,6 @@ export const HomePageAnimes = () => {
           )}
         </div>
       )}
-      <div className=" translate-y-14">
-        <Footer />
-      </div>
     </div>
   );
 };
