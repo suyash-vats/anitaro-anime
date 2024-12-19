@@ -25,8 +25,7 @@ export const NavbarContainer = () => {
   const handleSearch = () => {
     if (inputVal.trim() !== "") {
       router.push(`/searchanime/${inputVal}`);
-      setIsSearchVisible(false);
-      setInputval("");
+      handleCloseSearch();
     }
   };
 
@@ -37,12 +36,16 @@ export const NavbarContainer = () => {
   };
 
   const toggleSearch = () => {
-    setIsSearchVisible(!isSearchVisible);
+    setIsSearchVisible((prev) => !prev);
+    if (isMenuOpen) setIsMenuOpen(false);
     if (!isSearchVisible) {
-      setTimeout(() => {
-        document.querySelector("input")?.focus();
-      }, 100);
+      setTimeout(() => document.querySelector("input")?.focus(), 100);
     }
+  };
+
+  const handleCloseSearch = () => {
+    setIsSearchVisible(false);
+    setInputval("");
   };
 
   return (
@@ -50,19 +53,22 @@ export const NavbarContainer = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-background/60  backdrop-blur-lgshadow-sm"
+      className="bg-background/60 backdrop-blur-lg shadow-sm"
       maxWidth="full"
     >
       <NavbarContent className="sm:hidden">
-        <NavbarMenuToggle
-          className={`${isSearchVisible ? "hidden" : "block"}`}
-        />
+        {!isSearchVisible && (
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          />
+        )}
       </NavbarContent>
 
       <NavbarBrand className={`${isSearchVisible ? "hidden sm:flex" : "flex"}`}>
         <Link
           href="/"
           className="font-bold font-mono text-xl bg-gradient-to-r text-white bg-clip-text text-transparent hover:scale-105 transition-transform"
+          onClick={handleCloseSearch}
         >
           アニタロ
         </Link>
@@ -74,8 +80,7 @@ export const NavbarContainer = () => {
             href="/"
             className="text-foreground/60 hover:text-foreground transition-colors relative group"
           >
-            <span className=" font-mono">Anime</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+            <span className="font-mono">Anime</span>
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -83,8 +88,7 @@ export const NavbarContainer = () => {
             href="/manga"
             className="text-foreground/60 hover:text-foreground transition-colors relative group"
           >
-            <span className=" font-mono">Manga</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+            <span className="font-mono">Manga</span>
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -124,7 +128,7 @@ export const NavbarContainer = () => {
               <Button
                 isIconOnly
                 variant="light"
-                onClick={toggleSearch}
+                onClick={handleCloseSearch}
                 className="text-default-500"
               >
                 <X size={20} />
@@ -135,15 +139,11 @@ export const NavbarContainer = () => {
       </NavbarContent>
 
       <div
-        className={`
-          fixed inset-0 sm:hidden bg-background/80 backdrop-blur-md
-          transition-opacity duration-300 flex items-start pt-16 px-4
-          ${
-            isSearchVisible
-              ? "opacity-100 z-50"
-              : "opacity-0 pointer-events-none -z-10"
-          }
-        `}
+        className={`fixed inset-0 sm:hidden bg-background/80 backdrop-blur-md transition-opacity duration-300 flex items-start pt-16 px-4 ${
+          isSearchVisible
+            ? "opacity-100 z-50"
+            : "opacity-0 pointer-events-none -z-10"
+        }`}
       >
         <div className="w-full">
           <Input
@@ -188,9 +188,9 @@ export const NavbarContainer = () => {
       <NavbarMenu className="pt-6 bg-background/80 backdrop-blur-lg">
         <NavbarMenuItem>
           <Link
-            href="/anime"
+            href="/"
             className="w-full text-foreground/60 hover:text-foreground transition-colors py-2 text-lg"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={handleCloseSearch}
           >
             Anime
           </Link>
@@ -199,7 +199,7 @@ export const NavbarContainer = () => {
           <Link
             href="/manga"
             className="w-full text-foreground/60 hover:text-foreground transition-colors py-2 text-lg"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={handleCloseSearch}
           >
             Manga
           </Link>

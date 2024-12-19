@@ -188,7 +188,7 @@ export const MangaNavbar = () => {
       <NavbarMenu className="pt-6 bg-background/80 backdrop-blur-lg">
         <NavbarMenuItem>
           <Link
-            href="/anime"
+            href="/"
             className="w-full text-foreground/60 hover:text-foreground transition-colors py-2 text-lg"
             onClick={() => setIsMenuOpen(false)}
           >
