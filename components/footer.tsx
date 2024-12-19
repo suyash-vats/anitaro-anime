@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <Navbar isBordered className="border-t  font-mono py-4">
+    <Navbar isBordered className="border-t mt-10 font-mono py-4">
       <NavbarBrand className="flex justify-between items-center ">
         <div className="flex items-center space-x-4">
           <Copy />
