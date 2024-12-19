@@ -7,14 +7,6 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
 
-// interface Anidata {
-//   id: string;
-//   title: string;
-//   image: string;
-//   releaseDate: string;
-//   subOrDub: string;
-// }
-
 const GetsearchManga = ({ params }: any) => {
   const searchquery: any = use(params);
   const mangaid = searchquery.mangaid;

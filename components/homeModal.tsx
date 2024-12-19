@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { NavbarContainer } from "./navbar";
-import { div } from "framer-motion/client";
 
 const images = [
   {
