@@ -7,3 +7,4 @@ const MangaChapContainer = ({ mangadata }: any) => {
     </div>
   );
 };
+export default MangaChapContainer;

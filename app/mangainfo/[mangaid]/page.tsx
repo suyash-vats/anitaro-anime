@@ -4,6 +4,7 @@ import { MANGA_URL } from "@/config";
 import { Button, Image, Spinner } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState, use } from "react";
+import MangaChapContainer from "@/components/mangaChapContainer";
 
 export default function MangaInfo({ params }: any) {
   const resolvedParams: any = use(params);
