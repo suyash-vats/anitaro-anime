@@ -30,7 +30,7 @@ const images = [
     src: "/dorohedoro.jpeg",
     alt: "Dorohedoro",
     link: "/mangainfo/34f45c13-2b78-4900-8af2-d0bb551101f4",
-    year: 2020,
+    year: 2000,
     name: "Dorohedoro",
   },
   {
