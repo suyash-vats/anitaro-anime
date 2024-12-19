@@ -36,7 +36,7 @@ const images = [
   {
     src: "/opm.jpeg",
     alt: "One Punch Man",
-    link: "/mangainfo/d8a959f7-648e-4c8d-8f23-f1f3f8e129f3",
+    link: "/mangainfo/29c42e49-d6f5-4084-9cec-771f5660c90f",
     year: 2012,
     name: "One Punch Man",
   },
