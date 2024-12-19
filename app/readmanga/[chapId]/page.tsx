@@ -155,6 +155,9 @@ const ReadManga = () => {
       </div>
     );
   }
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
 
   return (
     <div>
@@ -186,7 +189,7 @@ const ReadManga = () => {
             >
               <img
                 ref={imageRef}
-                src={pages[currentPageIndex]?.img}
+                src={getProxyImageUrl(pages[currentPageIndex]?.img)}
                 alt={`Page ${pages[currentPageIndex]?.page}`}
                 className="max-h-full transition-all duration-200"
                 style={{
