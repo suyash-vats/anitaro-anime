@@ -9,7 +9,7 @@ const images = [
     src: "/berserk.jpg",
     alt: "Berserk",
     link: "/mangainfo/801513ba-a712-498c-8f57-cae55b38cc92",
-    year: 1990,
+    year: 1989,
     name: "Berserk",
   },
   {
