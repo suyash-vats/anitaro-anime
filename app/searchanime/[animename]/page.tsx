@@ -1,7 +1,7 @@
 "use client";
 import { NavbarContainer } from "@/components/navbar";
 import { CONSUMET_URL } from "@/config";
-import { Image, Spinner } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
