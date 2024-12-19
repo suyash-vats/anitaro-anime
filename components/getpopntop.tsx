@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 import Link from "next/link";
+import { Footer } from "./footer";
 
 interface Anime {
   id: string;
@@ -130,6 +131,9 @@ export const HomePageAnimes = () => {
           )}
         </div>
       )}
+      <div className=" translate-y-14">
+        <Footer />
+      </div>
     </div>
   );
 };
