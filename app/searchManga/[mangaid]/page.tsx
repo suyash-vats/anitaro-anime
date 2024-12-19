@@ -22,6 +22,9 @@ const GetsearchManga = ({ params }: any) => {
   useEffect(() => {
     getMangadata();
   }, [mangaid]);
+  const getProxyImageUrl = (originalUrl: string) => {
+    return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
+  };
   return (
     <div>
       <MangaNavbar />
@@ -39,7 +42,7 @@ const GetsearchManga = ({ params }: any) => {
                     width={400}
                     height={240}
                     radius="sm"
-                    src={manga.image}
+                    src={getProxyImageUrl(manga.image)}
                   />
 
                   {manga.title.length > 60
