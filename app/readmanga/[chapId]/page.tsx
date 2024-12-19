@@ -137,7 +137,7 @@ const ReadManga = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="flex flex-col items-center space-y-4">
-          <Loader2 className="w-12 h-12 animate-spin text-white" />
+          <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
           <p className="text-lg text-gray-300 animate-pulse">
             Loading manga...
           </p>
@@ -149,7 +149,7 @@ const ReadManga = () => {
   if (!pages.length) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="text-xl text-gray-300 bg-gray-900 p-8 rounded-lg">
+        <div className="text-xl text-gray-300 bg-zinc-900 p-8 rounded-lg">
           No pages found for this chapter.
         </div>
       </div>
@@ -167,13 +167,13 @@ const ReadManga = () => {
 
           <div
             ref={containerRef}
-            className="relative bg-gray-900 rounded-lg overflow-hidden"
+            className="relative bg-zinc-900 rounded-lg overflow-hidden"
             onWheel={handleWheel}
             style={{ height: "calc(100vh - 240px)" }}
           >
             {imageLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-lg">
-                <Loader2 className="w-12 h-12 animate-spin text-white" />
+                <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
               </div>
             )}
 
