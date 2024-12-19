@@ -12,6 +12,7 @@ import {
   Maximize,
 } from "lucide-react";
 import { MANGA_URL } from "@/config";
+import { MangaNavbar } from "@/components/mangaNavbar";
 
 interface Page {
   img: string;
@@ -156,107 +157,110 @@ const ReadManga = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-100 text-center mb-8">
-          Chapter {chapid}
-        </h1>
-
-        <div
-          ref={containerRef}
-          className="relative bg-gray-900 rounded-lg overflow-hidden"
-          onWheel={handleWheel}
-          style={{ height: "calc(100vh - 240px)" }}
-        >
-          {imageLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-lg">
-              <Loader2 className="w-12 h-12 animate-spin text-white" />
-            </div>
-          )}
+    <div>
+      <MangaNavbar />
+      <div className="min-h-screen bg-black py-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-100 text-center mb-8">
+            Chapter {chapid}
+          </h1>
 
           <div
-            className="w-full h-full flex items-center justify-center overflow-hidden"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
+            ref={containerRef}
+            className="relative bg-gray-900 rounded-lg overflow-hidden"
+            onWheel={handleWheel}
+            style={{ height: "calc(100vh - 240px)" }}
           >
-            <img
-              ref={imageRef}
-              src={pages[currentPageIndex]?.img}
-              alt={`Page ${pages[currentPageIndex]?.page}`}
-              className="max-h-full transition-all duration-200"
-              style={{
-                transform: `scale(${zoom}) translate(${position.x / zoom}px, ${
-                  position.y / zoom
-                }px)`,
-                cursor: zoom > 1 ? "grab" : "default",
-                objectFit: "contain",
-              }}
-              onLoad={() => setImageLoading(false)}
-              draggable={false}
-            />
+            {imageLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-lg">
+                <Loader2 className="w-12 h-12 animate-spin text-white" />
+              </div>
+            )}
+
+            <div
+              className="w-full h-full flex items-center justify-center overflow-hidden"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+            >
+              <img
+                ref={imageRef}
+                src={pages[currentPageIndex]?.img}
+                alt={`Page ${pages[currentPageIndex]?.page}`}
+                className="max-h-full transition-all duration-200"
+                style={{
+                  transform: `scale(${zoom}) translate(${
+                    position.x / zoom
+                  }px, ${position.y / zoom}px)`,
+                  cursor: zoom > 1 ? "grab" : "default",
+                  objectFit: "contain",
+                }}
+                onLoad={() => setImageLoading(false)}
+                draggable={false}
+              />
+            </div>
+
+            <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-4 pointer-events-none">
+              <button
+                onClick={handleNextPage}
+                disabled={currentPageIndex === pages.length - 1}
+                className={`pointer-events-auto p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all transform hover:scale-110 ${
+                  currentPageIndex === pages.length - 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : "opacity-100"
+                }`}
+              >
+                <ChevronLeft className="w-8 h-8 text-white" />
+              </button>
+
+              <button
+                onClick={handlePrevPage}
+                disabled={currentPageIndex === 0}
+                className={`pointer-events-auto p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all transform hover:scale-110 ${
+                  currentPageIndex === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : "opacity-100"
+                }`}
+              >
+                <ChevronRight className="w-8 h-8 text-white" />
+              </button>
+            </div>
+
+            <div className="absolute bottom-4 right-4 flex space-x-2">
+              <button
+                onClick={handleZoomOut}
+                className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
+              >
+                <ZoomOut className="w-5 h-5 text-white" />
+              </button>
+              <button
+                onClick={handleResetZoom}
+                className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
+              >
+                <Maximize className="w-5 h-5 text-white" />
+              </button>
+              <button
+                onClick={handleZoomIn}
+                className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
+              >
+                <ZoomIn className="w-5 h-5 text-white" />
+              </button>
+            </div>
           </div>
 
-          <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-4 pointer-events-none">
-            <button
-              onClick={handleNextPage}
-              disabled={currentPageIndex === pages.length - 1}
-              className={`pointer-events-auto p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all transform hover:scale-110 ${
-                currentPageIndex === pages.length - 1
-                  ? "opacity-50 cursor-not-allowed"
-                  : "opacity-100"
-              }`}
-            >
-              <ChevronLeft className="w-8 h-8 text-white" />
-            </button>
+          <div className="mt-6 flex flex-col items-center space-y-4">
+            <div className="bg-gray-900 px-6 py-3 rounded-full">
+              <span className="text-lg text-gray-300">
+                Page {pages[currentPageIndex]?.page} of {pages.length}
+              </span>
+            </div>
 
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPageIndex === 0}
-              className={`pointer-events-auto p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all transform hover:scale-110 ${
-                currentPageIndex === 0
-                  ? "opacity-50 cursor-not-allowed"
-                  : "opacity-100"
-              }`}
-            >
-              <ChevronRight className="w-8 h-8 text-white" />
-            </button>
-          </div>
-
-          <div className="absolute bottom-4 right-4 flex space-x-2">
-            <button
-              onClick={handleZoomOut}
-              className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
-            >
-              <ZoomOut className="w-5 h-5 text-white" />
-            </button>
-            <button
-              onClick={handleResetZoom}
-              className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
-            >
-              <Maximize className="w-5 h-5 text-white" />
-            </button>
-            <button
-              onClick={handleZoomIn}
-              className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
-            >
-              <ZoomIn className="w-5 h-5 text-white" />
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-6 flex flex-col items-center space-y-4">
-          <div className="bg-gray-900 px-6 py-3 rounded-full">
-            <span className="text-lg text-gray-300">
-              Page {pages[currentPageIndex]?.page} of {pages.length}
-            </span>
-          </div>
-
-          <div className="text-sm text-gray-400 space-y-1 text-center">
-            <div>Use arrow keys (← next / → previous) to navigate</div>
-            <div>Use Ctrl + Mouse wheel to zoom, drag to pan when zoomed</div>
-            <div>Current zoom: {(zoom * 100).toFixed(0)}%</div>
+            <div className="text-sm text-gray-400 space-y-1 text-center">
+              <div>Use arrow keys (← next / → previous) to navigate</div>
+              <div>Use Ctrl + Mouse wheel to zoom, drag to pan when zoomed</div>
+              <div>Current zoom: {(zoom * 100).toFixed(0)}%</div>
+            </div>
           </div>
         </div>
       </div>

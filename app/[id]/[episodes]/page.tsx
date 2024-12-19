@@ -3,6 +3,7 @@ import { CONSUMET_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
+import { NavbarContainer } from "@/components/navbar";
 
 type paramsType = Promise<{ id: string; episodes: string }>;
 
@@ -49,16 +50,19 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
   }
 
   return (
-    <div className=" bg-black mt-32">
-      {episodeData ? (
-        <div className=" flex justify-center mt-64">
-          <p className=" animate-pulse">Redirecting to episode...</p>
-        </div>
-      ) : (
-        <div className=" flex justify-center mt-52">
-          <Spinner size="lg" />
-        </div>
-      )}
+    <div>
+      <NavbarContainer />
+      <div className=" bg-black mt-32">
+        {episodeData ? (
+          <div className=" flex justify-center mt-64">
+            <p className=" animate-pulse">Redirecting to episode...</p>
+          </div>
+        ) : (
+          <div className=" flex justify-center mt-52">
+            <Spinner size="lg" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

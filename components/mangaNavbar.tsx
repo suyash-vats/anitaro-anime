@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export const NavbarContainer = () => {
+export const MangaNavbar = () => {
   const [inputVal, setInputval] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -24,7 +24,7 @@ export const NavbarContainer = () => {
 
   const handleSearch = () => {
     if (inputVal.trim() !== "") {
-      router.push(`/searchanime/${inputVal}`);
+      router.push(`/searchManga/${inputVal}`);
       setIsSearchVisible(false);
       setInputval("");
     }
@@ -50,7 +50,7 @@ export const NavbarContainer = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-background/60  backdrop-blur-lgshadow-sm"
+      className="bg-background/60 backdrop-blur-lgshadow-sm"
       maxWidth="full"
     >
       <NavbarContent className="sm:hidden">
@@ -100,7 +100,7 @@ export const NavbarContainer = () => {
                 inputWrapper:
                   "h-full font-normal text-default-500 hover:bg-default-100 transition-colors",
               }}
-              placeholder="Search anime..."
+              placeholder="Search manga..."
               size="sm"
               startContent={<Search size={18} className="text-default-400" />}
               type="search"
@@ -153,7 +153,7 @@ export const NavbarContainer = () => {
               input: "text-medium",
               inputWrapper: "h-full font-normal bg-default-100/50",
             }}
-            placeholder="Search anime..."
+            placeholder="Search manga..."
             size="lg"
             startContent={<Search size={20} className="text-default-400" />}
             endContent={
