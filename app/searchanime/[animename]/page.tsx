@@ -1,9 +1,8 @@
 "use client";
 import { NavbarContainer } from "@/components/navbar";
 import { CONSUMET_URL } from "@/config";
-import { Image } from "@nextui-org/react";
+import { Image, Spinner } from "@nextui-org/react";
 import axios from "axios";
-import { div } from "framer-motion/client";
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
 
@@ -33,7 +32,7 @@ const Animedata = ({ params }: any) => {
   return (
     <div>
       <NavbarContainer />
-      <div className=" flex justify-center">
+      <div className=" flex bg-black justify-center">
         <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]  bg-black mt-32 mb-16  sm:mt-12  grid gap-x-5 gap-y-4 sm:grid-cols-3">
           {aniData.map((anime) => (
             <div className="   col-span-1 " key={anime.id}>
