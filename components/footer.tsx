@@ -28,22 +28,22 @@ export const Footer = () => {
             <span className="pl-2">
               <a
                 target="_blank"
-                href="https://github.com/akshitvigg"
+                href="https://github.com/suyash-vats"
                 className="hover:underline"
               >
-                Akshit
+                suyash
               </a>
             </span>
           </p>
         </div>
 
         <div className="flex items-center space-x-4 text-white">
-          <a target="_blank" href="https://github.com/akshitvigg/anitaro">
+          <a target="_blank" href="https://github.com/suyash-vats">
             <Gitlogo />
           </a>
 
           <div className=" -translate-y-1">
-            <a target="_blank" href="https://x.com/AkshitVig4">
+            <a target="_blank" href="https://x.com/suyash_vats">
               <Xlogo />
             </a>
           </div>
