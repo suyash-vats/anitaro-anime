@@ -80,7 +80,8 @@ export const NavbarContainer = () => {
             href="/"
             className="text-foreground/60 hover:text-foreground transition-colors relative group"
           >
-            <span className="font-mono">Anime</span>
+            <span className=" font-mono">Anime</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -88,7 +89,8 @@ export const NavbarContainer = () => {
             href="/manga"
             className="text-foreground/60 hover:text-foreground transition-colors relative group"
           >
-            <span className="font-mono">Manga</span>
+            <span className=" font-mono">Manga</span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
         </NavbarItem>
       </NavbarContent>
