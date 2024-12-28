@@ -136,7 +136,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
                 iframeRef={iframeRef}
                 frameStyle="border-none w-full h-96 lg:h-[66vh]" onEnded={function (): void {
                   throw new Error("Function not implemented.");
-                } }              />
+                }} />
               <div className="mt-4 text-center">
                 <h3 className="text-2xl font-semibold text-gray-800">
                   {episodeData.title}
@@ -153,7 +153,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
         <div className="w-full max-w-7xl mt-12">
           <EpisodeContainer
             anidata={animeData}
-            currentEpisode={episodeData?.episodeNumber || null}
+            currentEpisode={episodeData?.episodeNumber || ""}
             previousEpisode={previousEpisode}
           />
         </div>
