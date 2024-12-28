@@ -8,9 +8,7 @@ import { NavbarContainer } from "@/components/navbar";
 import { Player } from "@/components/Player";
 import EpisodeContainer from "@/components/episodecontainer2";
 
-type paramsType = Promise<{ id: string; episodes: string }>;
-
-// Define the interface for episode data
+// Define types for API responses
 interface Episode {
   title: string;
   description: string;
@@ -19,13 +17,22 @@ interface Episode {
   server: string;
 }
 
+interface AnimeData {
+  title: string;
+  description: string;
+  image: string;
+  // Add other fields as needed
+}
+
+type paramsType = Promise<{ id: string; episodes: string }>;
+
 const WatchEpisode = ({ params }: { params: paramsType }) => {
   const [unwrappedParams, setUnwrappedParams] = useState<{
     id: string;
     episodes: string;
   } | null>(null);
   const [episodeData, setEpisodeData] = useState<Episode | null>(null);
-  const [animeData, setAnimeData] = useState<any>(null);
+  const [animeData, setAnimeData] = useState<AnimeData | null>(null);
   const [previousEpisode, setPreviousEpisode] = useState<string | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -44,7 +51,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
 
       const getEpisode = async () => {
         try {
-          const response = await axios.get(
+          const response = await axios.get<Episode[]>(
             `${CONSUMET_URL}/servers/${id}-episode-${episodes}`
           );
           const newEpisode = response.data[0];
@@ -57,7 +64,9 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
 
       const getAnimeData = async () => {
         try {
-          const response = await axios.get(`${CONSUMET_URL}/info/${id}`);
+          const response = await axios.get<AnimeData>(
+            `${CONSUMET_URL}/info/${id}`
+          );
           setAnimeData(response.data);
         } catch (error) {
           console.error("Failed to fetch anime data:", error);
