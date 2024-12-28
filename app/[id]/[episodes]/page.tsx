@@ -21,7 +21,6 @@ interface AnimeData {
   title: string;
   description: string;
   image: string;
-  // Add other fields as needed
 }
 
 type ParamsType = Promise<{ id: string; episodes: string }>;
@@ -35,7 +34,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
   const [animeData, setAnimeData] = useState<AnimeData | null>(null);
   const [previousEpisode, setPreviousEpisode] = useState<string | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null!); // Non-null assertion
 
   useEffect(() => {
     const unwrapParams = async () => {
@@ -54,7 +53,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
           const response = await axios.get<Episode[]>(
             `${CONSUMET_URL}/servers/${id}-episode-${episodes}`
           );
-          const newEpisode = response.data[0]; // Response is explicitly typed as Episode[]
+          const newEpisode = response.data[0];
           setPreviousEpisode(episodeData?.episodeNumber || null);
           setEpisodeData(newEpisode);
         } catch (error) {
@@ -67,7 +66,7 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
           const response = await axios.get<AnimeData>(
             `${CONSUMET_URL}/info/${id}`
           );
-          setAnimeData(response.data); // Response is explicitly typed as AnimeData
+          setAnimeData(response.data);
         } catch (error) {
           console.error("Failed to fetch anime data:", error);
         }
@@ -98,7 +97,6 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
         <div className="w-full max-w-7xl flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
           {/* Anime Poster and Description */}
           <div className="flex flex-col lg:w-1/3 space-y-6">
-            {/* Anime Poster */}
             <div className="w-100vh h-auto">
               <img
                 className="object-cover rounded-lg shadow-lg"
@@ -108,10 +106,8 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
                 height={384}
               />
             </div>
-
-            {/* Anime Description */}
             <div
-              className="bg-white p-6 rounded-lg "
+              className="bg-white p-6 rounded-lg"
               style={{ backgroundColor: "var(--bg-300)" }}
             >
               <h2 className="text-2xl font-semibold text-white">Description</h2>
@@ -138,8 +134,9 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
                 dataUrl={episodeData.url}
                 serverName={episodeData.server}
                 iframeRef={iframeRef}
-                frameStyle="border-none w-full h-96 lg:h-[66vh]"
-              />
+                frameStyle="border-none w-full h-96 lg:h-[66vh]" onEnded={function (): void {
+                  throw new Error("Function not implemented.");
+                } }              />
               <div className="mt-4 text-center">
                 <h3 className="text-2xl font-semibold text-gray-800">
                   {episodeData.title}
@@ -153,8 +150,6 @@ const WatchEpisode = ({ params }: { params: ParamsType }) => {
             </div>
           )}
         </div>
-
-        {/* Episode Navigation */}
         <div className="w-full max-w-7xl mt-12">
           <EpisodeContainer
             anidata={animeData}
