@@ -1,11 +1,10 @@
 "use client";
 import { CONSUMET_URL } from "@/config";
-import { Button, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 import Link from "next/link";
-import { Footer } from "./footer";
 
 interface Anime {
   id: string;
@@ -19,13 +18,12 @@ export const HomePageAnimes = () => {
   const [activeButton, setActiveBtn] = useState("/top-airing");
   const [loading, setLoading] = useState<boolean>(true);
   const [btnLoading, setbtnLoading] = useState<boolean>(false);
-  const [animeId, setAnimeid] = useState("");
 
   const getTrendinganime = async (path: string) => {
     try {
       setbtnLoading(true);
       const response = await axios.get<{ results: Anime[] }>(
-        CONSUMET_URL + path
+        CONSUMET_URL + path + "?limit=80"
       );
       setTopanime(response.data.results);
       setActiveBtn(path);
@@ -43,19 +41,19 @@ export const HomePageAnimes = () => {
   }, []);
 
   return (
-    <div className=" min-h-screen mt-32  -translate-y-14 bg-[#0a0a0a]">
+    <div className="min-h-screen mt-32 bg-[#1A1F2B] text-[#FFFFFF]">
       {loading ? (
         <div className="flex justify-center">
           <Spinner size="lg" />
         </div>
       ) : (
         <div>
-          <div className="flex bg-[#3f3f46] sm:ml-[85px] ml-2 mr-2 sm:mr-[85px] rounded-xl py-2 px-2 shadow-lg justify-between">
+          <div className="flex bg-[#292e3b] sm:ml-[85px] ml-2 mr-2 sm:mr-[85px] rounded-xl py-3 px-4 shadow-lg justify-between space-x-6">
             <Button
-              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
+              className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ease-in-out rounded-lg text-center border border-transparent hover:border-[#FF4D4D] ${
                 activeButton === "/top-airing"
-                  ? "bg-black text-white shadow-md"
-                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
+                  ? "bg-[#FF4D4D] text-[#FFFFFF] shadow-2xl transform scale-105 hover:scale-110"
+                  : "bg-[#292e3b] text-[#FFFFFF] hover:text-[#1A1F2B] hover:bg-[#FF4D4D] hover:scale-105"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/top-airing")}
@@ -64,10 +62,10 @@ export const HomePageAnimes = () => {
             </Button>
 
             <Button
-              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
+              className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ease-in-out rounded-lg text-center border border-transparent hover:border-[#FF4D4D] ${
                 activeButton === "/popular"
-                  ? "bg-black text-white shadow-md"
-                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
+                  ? "bg-[#FF4D4D] text-[#FFFFFF] shadow-2xl transform scale-105 hover:scale-110"
+                  : "bg-[#292e3b] text-[#FFFFFF] hover:text-[#1A1F2B] hover:bg-[#FF4D4D] hover:scale-105"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/popular")}
@@ -76,10 +74,10 @@ export const HomePageAnimes = () => {
             </Button>
 
             <Button
-              className={`flex-1 py-2 transition-colors duration-300 ease-in-out rounded-lg text-center ${
+              className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ease-in-out rounded-lg text-center border border-transparent hover:border-[#FF4D4D] ${
                 activeButton === "/recent-episodes"
-                  ? "bg-black text-white shadow-md"
-                  : "bg-[#3f3f46] text-[#94949d] hover:bg-[#52525b] hover:text-white"
+                  ? "bg-[#FF4D4D] text-[#FFFFFF] shadow-2xl transform scale-105 hover:scale-110"
+                  : "bg-[#292e3b] text-[#FFFFFF] hover:text-[#1A1F2B] hover:bg-[#FF4D4D] hover:scale-105"
               }`}
               radius="sm"
               onPress={() => getTrendinganime("/recent-episodes")}
@@ -89,42 +87,36 @@ export const HomePageAnimes = () => {
           </div>
 
           {btnLoading ? (
-            <div className=" flex justify-center mt-10">
+            <div className="flex justify-center mt-10">
               <Spinner size="lg" />
             </div>
           ) : (
-            <div className=" flex justify-center">
-              <div className=" sm:ml-[80px] ml-4 mr-4 sm:mr-[80px]   mt-16  grid gap-x-2 gap-y-4 sm:grid-cols-3">
+            <div className="flex justify-center">
+              <div className="sm:ml-[80px] ml-4 mr-4 sm:mr-[80px] mt-16 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {topanime.map((anime) => (
-                  <div className=" flex  col-span-1 " key={anime.id}>
-                    <Link href={`/animeinfo/${anime.id}`}>
-                      <div>
-                        <Image
-                          // isBlurred={true}
-                          isZoomed
-                          onClick={() => {
-                            setAnimeid(anime.id);
-                          }}
-                          className=" hover:cursor-pointer mb-2 border border-[#3f3f46] object-cover"
-                          loading="lazy"
-                          width={440}
-                          height={240}
-                          radius="sm"
-                          alt="anime images"
-                          src={anime.image}
-                        />
-                        <div className="mt-2">
-                          {anime.title.length > 60
-                            ? anime.title.slice(0, 17) + "..."
+                  <Link href={`/animeinfo/${anime.id}`} key={anime.id}>
+                    <div className="relative bg-[#292e3b] rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 overflow-hidden">
+                      <img
+                        src={anime.image}
+                        alt={anime.title}
+                        className="w-full h-96 object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-[#292e3b] to-transparent p-4">
+                        <h3 className="text-lg font-extrabold text-[#FFFFFF] truncate">
+                          {anime.title.length > 40
+                            ? anime.title.slice(0, 40) + "..."
                             : anime.title}
-                        </div>
-                        <div className=" text-gray-400">
+                        </h3>
+                        <p className="text-sm text-[#FFFFFF] mt-1">
                           {activeButton === "/popular" ? null : "Episode "}
                           {anime.episodeNumber}
-                        </div>
+                        </p>
                       </div>
-                    </Link>
-                  </div>
+                      <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 flex justify-center items-center text-[#FFFFFF] text-lg font-bold transition-opacity duration-300">
+                        View Details
+                      </div>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>

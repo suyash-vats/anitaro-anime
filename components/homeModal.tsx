@@ -52,21 +52,42 @@ const images = [
 
 export default function HomepageModal() {
   const [currImageIndex, setCurrImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrImageIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setCurrImageIndex((prev) => (prev + 1) % images.length);
+      }, 4000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowRight") {
+        setCurrImageIndex((prev) => (prev + 1) % images.length);
+      } else if (event.key === "ArrowLeft") {
+        setCurrImageIndex((prev) => (prev - 1 + images.length) % images.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <div>
       <NavbarContainer />
-      <div className=" pt-12 relative">
+      <div className="pt-12 relative">
         <div className="flex justify-center">
-          <div className="relative sm:w-[1350px] w-[340px] h-[470px]">
+          <div
+            className="relative sm:w-[1350px] w-[340px] h-[470px]"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <Image
               src={images[currImageIndex].src}
               alt={images[currImageIndex].alt}
@@ -93,6 +114,40 @@ export default function HomepageModal() {
               className="absolute inset-0 rounded-xl"
               aria-label={`View ${images[currImageIndex].name}`}
             />
+
+            {/* Left Arrow */}
+            <div
+              className="absolute left-[-50px] top-0 bottom-0 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 bg-gradient-to-r from-transparent to-black/40 hover:from-black/20 hover:to-black/80"
+              onClick={() => setCurrImageIndex((prev) => (prev - 1 + images.length) % images.length)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="white"
+                className="w-12 h-12 transition-transform duration-300 hover:scale-125"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </div>
+
+            {/* Right Arrow */}
+            <div
+              className="absolute right-[-50px] top-0 bottom-0 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 bg-gradient-to-l from-transparent to-black/40 hover:from-black/20 hover:to-black/80"
+              onClick={() => setCurrImageIndex((prev) => (prev + 1) % images.length)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="white"
+                className="w-12 h-12 transition-transform duration-300 hover:scale-125"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>

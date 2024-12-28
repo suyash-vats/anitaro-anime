@@ -19,10 +19,16 @@ interface Page {
   page: number;
 }
 
+interface Chapter {
+  id: string;
+  name: string;
+}
+
 const ReadManga = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [chapid, setChapid] = useState<string | undefined>(undefined);
+  const [chapterName, setChapterName] = useState<string | undefined>(undefined);
   const [pages, setPages] = useState<Page[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -44,20 +50,26 @@ const ReadManga = () => {
   useEffect(() => {
     if (!chapid) return;
 
-    const fetchMangaPages = async () => {
+    const fetchMangaData = async () => {
       try {
         setLoading(true);
         const response = await fetch(`${MANGA_URL}/mangadex/read/${chapid}`);
         const data: Page[] = await response.json();
         setPages(data);
+
+        // Fetch chapter name
+        const chapterResponse = await fetch(`${MANGA_URL}/mangadex/chapter/${chapid}`);
+        const chapterData: Chapter = await chapterResponse.json();
+        console.log("Chapter Data:", chapterData); // Debugging to check if name is returned
+        setChapterName(chapterData.name); // Set the chapter name
       } catch (error) {
-        console.error("Failed to fetch manga pages:", error);
+        console.error("Failed to fetch manga data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchMangaPages();
+    fetchMangaData();
   }, [chapid]);
 
   const handleNextPage = () => {
@@ -133,6 +145,17 @@ const ReadManga = () => {
     resetZoomAndPosition();
   };
 
+  const handleFullscreen = () => {
+    const elem = containerRef.current;
+    if (elem) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        elem.requestFullscreen();
+      }
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
@@ -155,6 +178,7 @@ const ReadManga = () => {
       </div>
     );
   }
+
   const getProxyImageUrl = (originalUrl: string) => {
     return `/api/manga-image?imageUrl=${encodeURIComponent(originalUrl)}`;
   };
@@ -165,7 +189,7 @@ const ReadManga = () => {
       <div className="min-h-screen bg-black py-8 px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-100 text-center mb-8">
-            Chapter {chapid}
+            {chapterName || `Chapter ${chapid}`}
           </h1>
 
           <div
@@ -230,18 +254,18 @@ const ReadManga = () => {
               </button>
             </div>
 
-            <div className="absolute bottom-4 right-4 flex space-x-2">
+            <div className="absolute bottom-4 right-16 flex space-x-2">
+              <button
+                onClick={handleFullscreen}
+                className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
+              >
+                <Maximize className="w-5 h-5 text-white" />
+              </button>
               <button
                 onClick={handleZoomOut}
                 className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
               >
                 <ZoomOut className="w-5 h-5 text-white" />
-              </button>
-              <button
-                onClick={handleResetZoom}
-                className="p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all"
-              >
-                <Maximize className="w-5 h-5 text-white" />
               </button>
               <button
                 onClick={handleZoomIn}

@@ -82,9 +82,23 @@ const EpisodeContainer = ({ anidata }: any) => {
         </div>
       )}
 
-      <div className="h-[500px] overflow-y-auto pr-2">
+      <div className="h-[500px] overflow-y-auto pr-20 pl-20" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         <div className="grid grid-cols-4 gap-4">{renderEpisodes()}</div>
       </div>
+
+      {/* Custom styles to hide the scrollbar in Webkit browsers */}
+      <style jsx global>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .h-[500px]::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge */
+        .h-[500px] {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };

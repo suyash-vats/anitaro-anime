@@ -5,7 +5,6 @@ import { NavbarContainer } from "@/components/navbar";
 import { CONSUMET_URL } from "@/config";
 import { Button, Image, Spinner } from "@nextui-org/react";
 import axios from "axios";
-import { div } from "framer-motion/client";
 import { useEffect, useState, use } from "react";
 
 export default function AnimeInfo({ params }: any) {
@@ -30,10 +29,10 @@ export default function AnimeInfo({ params }: any) {
 
   if (!anidata) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-black">
+      <div className="flex justify-center items-center min-h-screen" style={{ backgroundColor: "var(--bg-100)" }}>
         <div className="relative">
-          <Spinner size="lg" className="w-20 ml-9 h-20" />
-          <div className="mt-4 text-gray-400 text-lg animate-pulse">
+          <Spinner size="lg" className="w-20 ml-9 h-20 text-accent-300" />
+          <div className="mt-4" style={{ color: "var(--text-200)", fontSize: "1.25rem" }}>
             Loading your anime...
           </div>
         </div>
@@ -49,100 +48,65 @@ export default function AnimeInfo({ params }: any) {
       : [];
 
   return (
-    <div>
+    <div className="bg-gradient-to-b from-dark-blue via-midnight-blue to-deep-purple">
       <NavbarContainer />
-      <div className="bg-gradient-to-b font-mono from-black to-neutral-900 min-h-screen">
+      <div className="min-h-screen" style={{ backgroundColor: "var(--bg-200)" }}>
         <div
-          className="absolute top-0 left-0 w-full h-[400px] bg-cover bg-center opacity-10 blur-sm"
-          style={{ backgroundImage: `url(${anidata.image})` }}
+          className="absolute top-0 left-0 w-full h-[400px] opacity-30 blur-sm"
+          style={{ backgroundImage: `url(${anidata.image})`, backgroundSize: "cover", backgroundPosition: "center" }}
         />
-
         <div className="relative z-10">
-          <div className="w-full h-48 bg-gradient-to-b from-black/90 to-transparent" />
+          <div className="w-full h-48" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)" }} />
 
           <div className="max-w-7xl mx-auto px-4 -mt-24">
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="lg:w-1/3">
-                <div className="relative group">
+                <div className="relative group transform transition duration-500 hover:scale-105">
                   <Image
-                    className="object-cover rounded-lg shadow-2xl shadow-amber-500/10 
-                           transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover rounded-xl shadow-lg hover:shadow-xl transition-transform"
                     src={anidata.image}
                     width={350}
                     height={500}
                     alt={anidata.title || "Anime cover"}
-                  />
-                  <div
-                    className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/60 via-transparent to-transparent 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
               </div>
 
               <div className="lg:w-2/3 space-y-6">
                 <h1
-                  className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r 
-                           from-neutral-200 to-gray-400"
+                  className="text-5xl font-bold tracking-tight text-white drop-shadow-lg"
+                  style={{ letterSpacing: "-0.5px" }}
                 >
                   {anidata.title}
                 </h1>
 
-                <div className="bg-black backdrop-blur-sm rounded-lg p-6 shadow-xl border border-neutral-800">
-                  <p className="text-gray-300 leading-relaxed">
-                    {anidata.description}
-                  </p>
+                <div
+                  className="rounded-xl p-6 shadow-2xl"
+                  style={{ backgroundColor: "var(--bg-300)", border: "1px solid var(--primary-200)" }}
+                >
+                  <p style={{ color: "var(--text-200)", lineHeight: "1.8" }}>{anidata.description}</p>
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="text-lg font-semibold text-white">Genres</h2>
+                  <h2 className="text-xl font-medium text-accent-300">Genres</h2>
                   <div className="flex flex-wrap gap-2">
                     {genres.map((genre: string, index: number) => (
                       <Button
                         key={index}
-                        className="bg-black hover:bg-neutral-800 
-                               border border-amber-900/30 backdrop-blur-sm transition-all
-                               hover:scale-105 hover:shadow-lg hover:shadow-amber-500/10"
-                        variant="bordered"
-                        size="sm"
-                        radius="lg"
+                        className="hover:scale-105 transition-all text-lg px-4 py-2"
+                        style={{
+                          backgroundColor: "var(--bg-300)",
+                          color: "var(--text-100)",
+                          border: "2px solid var(--accent-100)",
+                          borderRadius: "1rem",
+                          fontFamily: "'Poppins', sans-serif",
+                        }}
                       >
                         {genre}
                       </Button>
                     ))}
                   </div>
                 </div>
-
-                {(anidata.rating || anidata.status || anidata.releaseDate) && (
-                  <div
-                    className="grid grid-cols-2 md:grid-cols-3 gap-4 bg-black backdrop-blur-sm 
-                               rounded-lg p-4 mt-6 border border-neutral-800"
-                  >
-                    {anidata.rating && (
-                      <div className="space-y-1">
-                        <h3 className="text-amber-200 text-sm">Rating</h3>
-                        <p className="text-white font-semibold">
-                          {anidata.rating}
-                        </p>
-                      </div>
-                    )}
-                    {anidata.status && (
-                      <div className="space-y-1">
-                        <h3 className="text-gray-400 text-sm">Status</h3>
-                        <p className="text-white font-semibold">
-                          {anidata.status}
-                        </p>
-                      </div>
-                    )}
-                    {anidata.releaseDate && (
-                      <div className="space-y-1">
-                        <h3 className="text-gray-400 text-sm">Released</h3>
-                        <p className="text-white font-semibold">
-                          {anidata.releaseDate}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
           </div>
