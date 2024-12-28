@@ -65,7 +65,7 @@ export default function HomepageModal() {
   }, [isHovered]);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         setCurrImageIndex((prev) => (prev + 1) % images.length);
       } else if (event.key === "ArrowLeft") {
