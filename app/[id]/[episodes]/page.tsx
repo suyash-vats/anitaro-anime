@@ -24,9 +24,9 @@ interface AnimeData {
   // Add other fields as needed
 }
 
-type paramsType = Promise<{ id: string; episodes: string }>;
+type ParamsType = Promise<{ id: string; episodes: string }>;
 
-const WatchEpisode = ({ params }: { params: paramsType }) => {
+const WatchEpisode = ({ params }: { params: ParamsType }) => {
   const [unwrappedParams, setUnwrappedParams] = useState<{
     id: string;
     episodes: string;
@@ -54,7 +54,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
           const response = await axios.get<Episode[]>(
             `${CONSUMET_URL}/servers/${id}-episode-${episodes}`
           );
-          const newEpisode = response.data[0];
+          const newEpisode = response.data[0]; // Response is explicitly typed as Episode[]
           setPreviousEpisode(episodeData?.episodeNumber || null);
           setEpisodeData(newEpisode);
         } catch (error) {
@@ -67,7 +67,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
           const response = await axios.get<AnimeData>(
             `${CONSUMET_URL}/info/${id}`
           );
-          setAnimeData(response.data);
+          setAnimeData(response.data); // Response is explicitly typed as AnimeData
         } catch (error) {
           console.error("Failed to fetch anime data:", error);
         }
@@ -110,7 +110,10 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
             </div>
 
             {/* Anime Description */}
-            <div className="bg-white p-6 rounded-lg " style={{ backgroundColor: "var(--bg-300)" }}>
+            <div
+              className="bg-white p-6 rounded-lg "
+              style={{ backgroundColor: "var(--bg-300)" }}
+            >
               <h2 className="text-2xl font-semibold text-white">Description</h2>
               <p className="text-lg text-gray-600 mt-4">
                 {showFullDescription || animeData.description.length <= 300
@@ -155,7 +158,7 @@ const WatchEpisode = ({ params }: { params: paramsType }) => {
         <div className="w-full max-w-7xl mt-12">
           <EpisodeContainer
             anidata={animeData}
-            currentEpisode={episodeData?.episodeNumber}
+            currentEpisode={episodeData?.episodeNumber || null}
             previousEpisode={previousEpisode}
           />
         </div>
